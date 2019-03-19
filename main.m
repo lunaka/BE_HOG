@@ -17,6 +17,9 @@ G = imread(input_file);
 
 argumentPainted = color_by_orientation(G, arg);
 
-subplot(1,3,1); imshow(G); title('VRUM VRUM');
-subplot(1,3,2); imshow(mag); title('Magnitude');
-subplot(1,3,3); imshow(argumentPainted); title('Argument');
+gridImage = draw_grid(G);
+
+subplot(2,3,1); imshow(G); title('VRUM VRUM');
+subplot(2,3,2); imshow(mag); title('Magnitude');
+subplot(2,3,3); imshow(argumentPainted); title('Argument');
+subplot(2,3,[4,6]); imshow(gridImage); title('Grided Image');
