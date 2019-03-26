@@ -1,5 +1,5 @@
 %% Class: Capteurs et traitement d'images - BE HOG
-% Authors: Natália Gubiani Rampon
+% Authors: Natalia Gubiani Rampon
 %		   Lucas Neto Nakadaira
 %
 % HOG (Histogram of Oriented Gradient) descriptors algorithm implementation
@@ -19,7 +19,10 @@ argumentPainted = color_by_orientation(G, arg);
 
 gridImage = draw_grid(G);
 
+figure;
 subplot(2,3,1); imshow(G); title('VRUM VRUM');
 subplot(2,3,2); imshow(mag); title('Magnitude');
 subplot(2,3,3); imshow(argumentPainted); title('Argument');
 subplot(2,3,[4,6]); imshow(gridImage); title('Grided Image');
+
+HOG = draw_HOG(G,arg);
