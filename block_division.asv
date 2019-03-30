@@ -25,11 +25,11 @@ function [HOG_image,blocks] = block_division(I, arg, mag)
     nb_h = h/cell_height;
     nb_w = w/cell_width;
     nb_cells = ceil(nb_h)*ceil(nb_w);
-    blocks = zeros(nb_cells,nb_bins);
+    blocks = zeros(floor(nb_cells/cells_p_block),nb_bins);
     counter = 1;
     
     % Goes through each cell
-    for i = 1:cell_height:h
+    for i = 1:cells_p_block*cell_height:h
         for j = 1:cell_width:w
             
             limit_i = i+cells_p_block*cell_height;

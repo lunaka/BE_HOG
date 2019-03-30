@@ -44,7 +44,7 @@ function [HOG_image,cells] = draw_HOG(I, arg, mag)
   
             ax = axes('pos', [i/h j/w (limit_i-i)/h (limit_j-j)/w]);
             HOG_feat = getHogFeature(arg(i:limit_i, j:limit_j), mag(i:limit_i, j:limit_j), nb_bins);
-            hist1 = histogram(ax, arg(i:limit_i, j:limit_j), nb_bins, 'EdgeColor', 'none', 'FaceColor','red');
+            hist1 = bar(ax, HOG_feat);
             cells(counter,:) = HOG_feat;
             counter = counter + 1;
             alpha(hist1,.7);

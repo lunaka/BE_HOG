@@ -9,7 +9,7 @@
 %%
 
 clear all;
-%{
+
 input_file = 'car1.bmp';
 
 G = imread(input_file);
@@ -25,8 +25,7 @@ subplot(2,3,2); imshow(mag); title('Magnitude');
 subplot(2,3,3); imshow(argumentPainted); title('Argument');
 subplot(2,3,[4,6]); imshow(gridImage); title('Grided Image');
 
-[HOG,cells] = draw_HOG(G,arg); 
-%}
+[HOG,cells] = draw_HOG(G,arg, mag);
 
 %% Partie 2
 clear all
@@ -49,9 +48,9 @@ h2 = double(reshape(h2,1,[]));
 
 similarity = dot(h1,h2)/(norm(h1)*norm(h2))
 
-% h1 = block_division(I1,O1);
-% h2 = block_division(I2,O2);
-% h1 = reshape(h1,1,[]);
-% h2 = reshape(h2,1,[]);
+% h1 = block_division(I1,O1,G1);
+% h2 = block_division(I2,O2,G2);
+% h1 = double(reshape(h1,1,[]));
+% h2 = double(reshape(h2,1,[]));
 % 
 % similarity_normalized = dot(h1,h2)/(norm(h1)*norm(h2))
