@@ -1,4 +1,4 @@
-function [HOG_image,cells] = draw_HOG(I, arg)
+function [HOG_image,cells] = draw_HOG(I, arg, mag)
 
     figure;
     rgbImage = cat(3, I, I, I);
@@ -27,6 +27,7 @@ function [HOG_image,cells] = draw_HOG(I, arg)
     cells = zeros(nb_cells,nb_bins);
     counter = 1;
     
+    % Goes through each cell
     for i = 1:cell_height:h
         for j = 1:cell_width:w
             
@@ -42,9 +43,9 @@ function [HOG_image,cells] = draw_HOG(I, arg)
             end
   
             ax = axes('pos', [i/h j/w (limit_i-i)/h (limit_j-j)/w]);
-            fprintf("%f %f %f %f\n", i/h, j/w, (limit_i-i)/h, (limit_j-j)/w);
-            hist1 = histogram(ax, arg(i:limit_i, j:limit_j), nb_bins, 'EdgeColor', 'none', 'FaceColor','red')
-            cells(counter,:) = hist1.Values;
+            HOG_feat = getHogFeature(arg(i:limit_i, j:limit_j), mag(i:limit_i, j:limit_j), nb_bins);
+            hist1 = histogram(ax, arg(i:limit_i, j:limit_j), nb_bins, 'EdgeColor', 'none', 'FaceColor','red');
+            cells(counter,:) = HOG_feat;
             counter = counter + 1;
             alpha(hist1,.7);
             set(gca,'color','none')
